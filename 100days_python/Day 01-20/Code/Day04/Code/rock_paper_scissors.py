@@ -1,4 +1,4 @@
-import ascii
+import Day07.ascii as ascii
 import random
 import time
 

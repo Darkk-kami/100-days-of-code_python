@@ -1,6 +1,6 @@
-import lists
+import Day07.lists as lists
 import random
-import ascii
+import Day07.ascii as ascii
 
 print(ascii.logo)
 print("let's play hangman")
@@ -9,7 +9,6 @@ chosen_word = random.choice(lists.word_list)
 display = []
 lives = 6
 
-print(f"answer is {chosen_word}")
 
 for l in chosen_word:
     display.append("_")
