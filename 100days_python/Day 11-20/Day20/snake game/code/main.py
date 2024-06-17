@@ -31,11 +31,16 @@ while continue_game:
 
     if snake.head.distance(food) < 15:
         score_board.score_count()
+        snake.extend()
         food.refresh()
-
 
     if snake.head.xcor() > 300 or snake.head.xcor() < -300 or snake.head.ycor() > 300 or snake.head.ycor() < -300:
         score_board.game_over()
         continue_game = False
+
+    for blocks in snake.snake_blocks[1:]:
+        if snake.head.distance(blocks) < 10:
+            score_board.game_over()
+            continue_game = False
 
 screen.exitonclick()

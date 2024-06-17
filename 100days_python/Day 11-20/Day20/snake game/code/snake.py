@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-X_COORDINATES = [0, -20, -40]
+X_COORDINATES = [(0,0) , (-20,0) , (-40,0)]
 MOVE_DISTANCE = 20
 
 class Snake:
@@ -11,12 +11,20 @@ class Snake:
         self.head = self.snake_blocks[0]
         
     def create_snake(self):
-        for block in X_COORDINATES:
-            snake = Turtle(shape='square')
-            snake.penup()
-            snake.color('white')
-            snake.goto(x=block, y=0)
-            self.snake_blocks.append(snake)
+        for block in X_COORDINATES:         
+            self.add_block(block)
+ 
+    def add_block(self, block):
+        snake = Turtle(shape='square')
+        snake.penup()
+        snake.color('white')
+        snake.goto(block)
+        self.snake_blocks.append(snake)
+
+
+    def extend(self):
+        self.add_block(self.snake_blocks[-1].position())
+
 
     def move(self):
         for block_num in range(len(self.snake_blocks) - 1, 0, -1):
@@ -24,6 +32,15 @@ class Snake:
             new_y = self.snake_blocks[block_num - 1].ycor()
             self.snake_blocks[block_num].goto(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
+
+
+
+
+
+
+
+
+
 
     def up(self):
         if self.head.heading() != 270:  
@@ -41,4 +58,6 @@ class Snake:
         if self.head.heading() != 0:  
             self.head.setheading(180)
 
-            
+  
+
+
