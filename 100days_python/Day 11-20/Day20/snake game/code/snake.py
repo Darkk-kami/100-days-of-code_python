@@ -34,12 +34,12 @@ class Snake:
         self.head.forward(MOVE_DISTANCE)
 
 
-
-
-
-
-
-
+    def reset(self):
+        for blocks in self.snake_blocks:
+            blocks.goto(900, 900)
+        self.snake_blocks.clear()
+        self.create_snake()
+        self.head = self.snake_blocks[0]
 
 
     def up(self):
