@@ -13,7 +13,7 @@ state_list = data.state.to_list()
 
 score = 0
 guessed_state = []
-missing_states = []
+
 game_on = True
 while game_on:
 
@@ -30,9 +30,7 @@ while game_on:
         score += 1
 
     elif answer_state == 'Exit':
-        for state in state_list:
-            if state not in guessed_state:
-                missing_states.append(state)
+        missing_states = [state for state in state_list if state not in guessed_state]
         final_data = pandas.DataFrame(missing_states)
         final_data.to_csv("missing states.csv")
         break
