@@ -18,7 +18,7 @@ def sendmail(recipient, message):
 class Mail:
     def __init__(self):
         data = pandas.read_csv('birthdays.csv')
-        self.birthday_dict = {(row['month'], row['day']): (row['name'], row['email']) for index, row in data.iterrows()}
+        self.birthday_dict = {(row['month'], row['day']): row for index, row in data.iterrows()}
 
 
 

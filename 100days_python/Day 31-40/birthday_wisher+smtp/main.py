@@ -11,11 +11,10 @@ birthday_dict = mail.birthday_dict
 
 birthday_check = (now.month, now.day)
 
-
 if birthday_check in birthday_dict:
     with open(f'letter_templates/letter_{random.randint(1,3)}.txt') as file:
-        content = file.readlines()
-        birthday_txt = [n.replace('[NAME]', f'{birthday_dict[birthday_check][0]}') for n in content]
-        birthday_txt = "".join(birthday_txt)
+        birthday_person = birthday_dict[birthday_check]['name']
+        content = file.read()
+        birthday_txt = content.replace('[NAME]', f'{birthday_person}')
 
     sendmail(birthday_dict[birthday_check][1], birthday_txt)
